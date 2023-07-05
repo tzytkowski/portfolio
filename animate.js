@@ -44,7 +44,7 @@ const planetTexture = new THREE.TextureLoader().load('roughtexture.jpg');
 const planetBump = new THREE.TextureLoader().load('planetbump.jpg');
 
 //SUN
-var sunGeometry = new THREE.SphereGeometry(4.659, 1);
+var sunGeometry = new THREE.TorusGeometry(1.3, 3, 10, 100);
 var sunSkin = new THREE.TextureLoader().load("sun.png");
 var sunTexture = new THREE.TextureLoader().load("sunnormal.png");
 var sunMaterial = new THREE.MeshStandardMaterial({ 
