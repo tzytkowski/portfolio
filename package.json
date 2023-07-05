@@ -1,8 +1,18 @@
 {
-  "dependencies": {
-    "three": "^0.152.2"
-  },
+  "name": "playgroundproject",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "node.exe" 
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.3.2"
+  },
+  "dependencies": {
+    "three": "^0.152.2",
+    "three-orbitcontrols": "^2.110.3"
   }
 }
