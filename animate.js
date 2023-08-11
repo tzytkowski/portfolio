@@ -53,9 +53,10 @@ const secondlight = new THREE.DirectionalLight(0xffffff, 0.9);
 secondlight.position.set(115, -80, -5);
 scene.add(secondlight);
 
+/*
 const secondLightHelper = new THREE.DirectionalLightHelper(secondlight, 3);
 scene.add(secondLightHelper);
-
+*/
 /*
 //BACKGROUND
 var textureLoader = new THREE.TextureLoader();
