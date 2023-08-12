@@ -68,19 +68,19 @@ scene.add(backgroundPlane);
 */
 
 //TEXTURE
-const planetTexture = new THREE.TextureLoader().load('roughtexture.jpg');
+const planetTexture = new THREE.TextureLoader().load('planetTextures/roughtexture.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
 //SECOND TEXTURE WHICH IS TECHNICALLY A BUMP 
-const planetTextureTwo = new THREE.TextureLoader().load('bumpity.jpg');
+const planetTextureTwo = new THREE.TextureLoader().load('planetTextures/bumpity.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
 //BUMP
-const planetBump = new THREE.TextureLoader().load('planetbump.jpg');
+const planetBump = new THREE.TextureLoader().load('planetTextures/planetbump.jpg');
 
 //SUN
 var sunGeometry = new THREE.TorusGeometry(0.213, 10, 30, 149, 6.283185);
-var sunSkin = new THREE.TextureLoader().load("sun.png");
+var sunSkin = new THREE.TextureLoader().load("planetImages/sun.png");
 sunSkin.minFilter = THREE.LinearFilter;
-var sunTexture = new THREE.TextureLoader().load("sunny.jpg");
+var sunTexture = new THREE.TextureLoader().load("planetImages/sunny.jpg");
 sunSkin.minFilter = THREE.LinearFilter;
 var sunMaterial = new THREE.MeshStandardMaterial({ 
   map: sunSkin, 
@@ -155,7 +155,7 @@ secondlight.shadow.camera.far = 50000; // default
 
 //MERCURY
 var mercuryGeometry = new THREE.TetrahedronGeometry(1, 5);
-var mercuryTexture = new THREE.TextureLoader().load("mercury.jpg");
+var mercuryTexture = new THREE.TextureLoader().load("planetImages/mercury.jpg");
 mercuryTexture.minFilter = THREE.LinearFilter;
 var mercuryMaterial = new THREE.MeshStandardMaterial({
   map: mercuryTexture,
@@ -172,7 +172,7 @@ scene.add(mercury);
 
 //VENUS
 var venusGeometry = new THREE.SphereGeometry(1.022, 64, 20, 0, 6.28, 0, 3.42);
-var venusTexture = new THREE.TextureLoader().load("venus.jpg");
+var venusTexture = new THREE.TextureLoader().load("planetImages/venus.jpg");
 venusTexture.minFilter = THREE.LinearFilter
 var venusMaterial = new THREE.MeshStandardMaterial({
   map: venusTexture,
@@ -187,9 +187,9 @@ scene.add(venus);
 
 //EARTH
 var planet = new THREE.SphereGeometry(1.522, 64, 20, 0, 6.28, 0, 3.42);
-var earthSkin = new THREE.TextureLoader().load("earth.jpg");
+var earthSkin = new THREE.TextureLoader().load("planetImages/earth.jpg");
 earthSkin.minFilter = THREE.LinearFilter;
-var earthTexture = new THREE.TextureLoader().load('earthtexture.jpg');
+var earthTexture = new THREE.TextureLoader().load('planetTextures/earthtexture.jpg');
 earthTexture.minFilter = THREE.LinearFilter;
 var planetMaterial = new THREE.MeshStandardMaterial({
   map: earthSkin,
@@ -205,8 +205,8 @@ scene.add(earth);
 
 //MOON
 const moonShape = new THREE.SphereGeometry(0.522, 64, 20, 0, 6.28, 0, 3.42);
-const moonSkin = new THREE.TextureLoader().load("moon.jpg");
-const moonTexture = new THREE.TextureLoader().load('moontexture.jpg');
+const moonSkin = new THREE.TextureLoader().load("planetImages/moon.jpg");
+const moonTexture = new THREE.TextureLoader().load('planetTextures/moontexture.jpg');
 const moonMaterial = new THREE.MeshStandardMaterial({ 
   map: moonSkin,
   normalMap: moonTexture,
@@ -221,8 +221,8 @@ moon.position.set(30, -12, 10);
 
 //MARS
 var marsGeometry = new THREE.SphereGeometry(1.022, 64, 20, 0, 6.28, 0, 3.42);
-var marsSkin = new THREE.TextureLoader().load("mars.jpg");
-var marsTexture = new THREE.TextureLoader().load("marstexture.jpg");
+var marsSkin = new THREE.TextureLoader().load("planetImages/mars.jpg");
+var marsTexture = new THREE.TextureLoader().load("planetTextures/marstexture.jpg");
 
 var marsMaterial = new THREE.MeshStandardMaterial({
   map: marsSkin,
@@ -237,7 +237,7 @@ scene.add(mars);
 
 //JUPITER
 var jupiterGeometry  = new THREE.SphereGeometry(2.022, 64, 20, 0, 6.28, 0, 3.42);
-var jupiterTexture = new THREE.TextureLoader().load("jupiter.jpg");
+var jupiterTexture = new THREE.TextureLoader().load("planetImages/jupiter.jpg");
 jupiterTexture.minFilter = THREE.LinearFilter;
 var jupiterMaterial = new THREE.MeshStandardMaterial({
   map: jupiterTexture,
@@ -251,7 +251,7 @@ scene.add(jupiter);
 
 //SATURN
 var saturnGeometry  = new THREE.SphereGeometry(2.022, 64, 20, 0, 6.28, 0, 3.42);
-var saturnTexture = new THREE.TextureLoader().load("saturn.jpg");
+var saturnTexture = new THREE.TextureLoader().load("planetImages/saturn.jpg");
 saturnTexture.minFilter = THREE.LinearFilter;
 var saturnMaterial = new THREE.MeshStandardMaterial({
   map: saturnTexture,
@@ -265,7 +265,7 @@ scene.add(saturn);
 
 //SATURN RING
 var saturnRingGeometry = new THREE.TorusGeometry(7.293, 0.8712, 2, 100, 6.283185);
-var saturnRingTexture = new THREE.TextureLoader().load("sat.jpg");
+var saturnRingTexture = new THREE.TextureLoader().load("planetImages/sat.jpg");
 saturnRingTexture.minFilter = THREE.LinearFilter;
 var saturnRingMaterial = new THREE.MeshStandardMaterial({
   map: saturnRingTexture,
@@ -280,7 +280,7 @@ scene.add(saturnRing);
 
 //URANUS
 var uranusGeometry  = new THREE.SphereGeometry(2.022, 64, 20, 0, 6.28, 0, 3.42);
-var uranusTexture = new THREE.TextureLoader().load("uranus.jpg");
+var uranusTexture = new THREE.TextureLoader().load("planetImages/uranus.jpg");
 uranusTexture.minFilter = THREE.LinearFilter;
 var uranusMaterial = new THREE.MeshStandardMaterial({
   map: uranusTexture,
@@ -296,7 +296,7 @@ scene.add(uranus);
 
 //NEPTUNE
 var neptuneGeometry  = new THREE.SphereGeometry(2.022, 64, 20, 0, 6.28, 0, 3.42);
-var neptuneTexture = new THREE.TextureLoader().load("neptune.jpg");
+var neptuneTexture = new THREE.TextureLoader().load("planetImages/neptune.jpg");
 neptuneTexture.minFilter = THREE.LinearFilter;
 var neptuneMaterial = new THREE.MeshStandardMaterial({
   map: neptuneTexture,
