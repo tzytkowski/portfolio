@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/cont
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
-  75,
+  87,
   window.innerWidth / window.innerHeight,
   0.1,
   15000
@@ -12,7 +12,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-camera.position.set(8, 8, -85); // Set the initial position of the camera
+camera.position.set(-20, 7, -45); // Set the initial position of the camera
 camera.lookAt(scene.position); // Set the initial target of the camera
 
 
@@ -36,22 +36,19 @@ controls.enablePan = true;
 //STAGE
 
 //LOD
-
+/*
 //LIGHT
 var light = new THREE.SpotLight(0xFFFFFF, 22, 0, Math.PI / 4, 1); // Adjust the intensity (second parameter) to make it brighter
 light.position.set(5, 0, -5);
 scene.add(light);
-
+*/
 
 
 //LIGHT HELPER
 //const lightHelper = new THREE.DirectionalLightHelper( light, 5 );
 //scene.add( lightHelper );
 
-//SECOND LIGHT`
-const secondlight = new THREE.DirectionalLight(0xffffff, 0.9);
-secondlight.position.set(115, -80, -5);
-scene.add(secondlight);
+
 
 /*
 const secondLightHelper = new THREE.DirectionalLightHelper(secondlight, 3);
@@ -105,10 +102,11 @@ var starGeometry = new THREE.TetrahedronGeometry(2.2, 1);
 var starMaterial = new THREE.MeshStandardMaterial({ 
   //map: starTexture,
   bumpMap: planetTexture, 
-  roughness: 0.9,
-  metalness: 0.9,
-  antialias: true
-  
+  roughness: 1,
+  metalness: 0.0,
+  antialias: true,
+  emissive: new THREE.Color(0, 0, 0),
+  emissiveIntensity: 0.0
  });
  // Create an array to store the stars
  const stars = [];
@@ -130,6 +128,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
  
    // Add the star to the stars array
    stars.push(star);
+   star.receiveShadow = true;
  }
 
 //PARALLAX
@@ -141,9 +140,18 @@ for (let i = 0; i < 8000; i++) {
   star2.position.z = THREE.MathUtils.randFloatSpread(5000);
   star2.material.color.set('0x9DEE06');
   scene.add(star2);
+  star2.receiveShadow = true;
   stars2.push(star2);
 }
-
+//SECOND LIGHT`
+const secondlight = new THREE.DirectionalLight(0xffffff, 1.7);
+secondlight.position.set(115, -80, -5);
+scene.add(secondlight);
+secondlight.castShadow = true; // default false
+secondlight.shadow.mapSize.width = 50012; // default
+secondlight.shadow.mapSize.height = 5012; // default
+secondlight.shadow.camera.near = 0.5; // default
+secondlight.shadow.camera.far = 50000; // default
 
 //MERCURY
 var mercuryGeometry = new THREE.TetrahedronGeometry(1, 5);
@@ -256,7 +264,7 @@ saturn.position.set(-15, 20, -5);
 scene.add(saturn);
 
 //SATURN RING
-var saturnRingGeometry = new THREE.RingGeometry(11.107, 8.034, 30, 17, 1.411995, 6.283185);
+var saturnRingGeometry = new THREE.TorusGeometry(7.293, 0.8712, 2, 100, 6.283185);
 var saturnRingTexture = new THREE.TextureLoader().load("sat.jpg");
 saturnRingTexture.minFilter = THREE.LinearFilter;
 var saturnRingMaterial = new THREE.MeshStandardMaterial({
@@ -329,7 +337,7 @@ var position = 0;
 // Function to update the positions of stars and loop them
 function updateStarsPosition() {
   // Set the movement speed of the stars in the x-axis
-  const speed = 0.02;
+  const speed = 0.1;
 
   // Loop through the stars array and update their positions
   stars.forEach(star => {
@@ -345,7 +353,7 @@ function updateStarsPosition() {
 }
 function updateStars2Position() {
   // Set the movement speed of the stars in the x-axis
-  const speed2 = 0.05;
+  const speed2 = 0.22;
 
   // Loop through the stars array and update their positions
   stars2.forEach(star2 => {
@@ -376,15 +384,17 @@ function animate() {
   */
 
   //MERCURY
-  mercury.rotation.x = -0.005;
-  mercury.rotation.y += 0.003;
-  mercury.rotation.z += 0.002;
+
+  mercury.rotation.x = 0.00;
+  mercury.rotation.y += 0.010;
+  mercury.rotation.z += 0.00;
 
   //VENUS
   venus.rotation.y += 0.01;
 
   //EARTH
-  earth.rotation.y += 0.005;
+  earth.rotation.y += 0.002;
+  mercury.rotation.z += 0.03;
 
   //MOON
   moon.rotation.y += -0.01;
@@ -393,19 +403,19 @@ function animate() {
   mars.rotation.y += 0.01;
 
   //JUPITER
-  jupiter.rotation.x += 0.005;
+  jupiter.rotation.x += 0.00;
   jupiter.rotation.y += 0.01;
 
   //SATURN
-  saturnRing.rotation.x = 1.3;
-  saturnRing.rotation.z += 0.050;
+  saturnRing.rotation.x = 1.1;
+  saturnRing.rotation.z += 0.0080;
 
   //URANUS
-  uranus.rotation.x = -0.005;
+  uranus.rotation.x = 0.00;
   uranus.rotation.y += 0.01;
 
   //NEPTUNE
-  neptune.rotation.x = -0.005;
+  neptune.rotation.x = 0.00;
   neptune.rotation.y += 0.005;
 
   /*
