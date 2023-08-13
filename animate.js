@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/cont
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
-  87,
+  120,
   window.innerWidth / window.innerHeight,
   0.1,
   15000
@@ -12,22 +12,22 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-camera.position.set(-20, 7, -45); // Set the initial position of the camera
-camera.lookAt(scene.position); // Set the initial target of the camera
+camera.position.set(-20, 7, -10045); 
+camera.lookAt(scene.position);
 
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.1;
-//controls.screenSpacePanning = true;
+controls.screenSpacePanning = true;
 controls.enableZoom = true;
 controls.rotateSpeed = 0.44;
+controls.enablePan = true;
 //controls.minDistance = 100;
 //controls.maxDistance = 500;
-/*
-controls.zoomSpeed = 5.5;
-controls.enablePan = true;
-*/
+
+controls.zoomSpeed = 1.3;
+
 
 //CAMERA HELPER
 //const helper = new THREE.CameraHelper( camera );
@@ -70,14 +70,15 @@ scene.add(backgroundPlane);
 //TEXTURE
 const planetTexture = new THREE.TextureLoader().load('planetTextures/roughtexture.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
-//SECOND TEXTURE WHICH IS TECHNICALLY A BUMP 
+
+//SECOND TEXTURE WHICH IS ESSENTIALLY A BUMP 
 const planetTextureTwo = new THREE.TextureLoader().load('planetTextures/bumpity.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
 //BUMP
 const planetBump = new THREE.TextureLoader().load('planetTextures/planetbump.jpg');
 
 //SUN
-var sunGeometry = new THREE.TorusGeometry(0.213, 10, 30, 149, 6.283185);
+var sunGeometry = new THREE.TorusGeometry(2.913, 10, 30, 149, 6.283185);
 var sunSkin = new THREE.TextureLoader().load("planetImages/sun.png");
 sunSkin.minFilter = THREE.LinearFilter;
 var sunTexture = new THREE.TextureLoader().load("planetImages/sunny.jpg");
@@ -86,9 +87,9 @@ var sunMaterial = new THREE.MeshStandardMaterial({
   map: sunSkin, 
   normalMap: planetTextureTwo,
   bumpMap: planetTextureTwo,
-  emissiveMap: sunTexture, // Use the same texture for emissive to make the sun glow
-  emissive: 0xffffff, // Emissive color (white)
-  emissiveIntensity: 4.5, // Increase the intensity
+  emissiveMap: sunTexture, //Use the same texture for emissive to make the sun glow
+  emissive: 0xffffff, 
+  emissiveIntensity: 4.5, 
   roughness: 1,
   metalness: 1,
   antialias: true
@@ -112,9 +113,9 @@ var starMaterial = new THREE.MeshStandardMaterial({
  const stars = [];
  const stars2 = [];
 
- // create stars and add them to the scene
- for (let i = 0; i < 20000; i++) {
-   // create a star mesh
+               //Create stars and add them to the scene
+ for (let i = 0; i < 9000; i++) {
+                //Create a star mesh
    const star = new THREE.Mesh(starGeometry, starMaterial);
  
    // set the position of the star to a random point within a cube centered at the origin
@@ -133,7 +134,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
 
 //PARALLAX
 
-for (let i = 0; i < 8000; i++) {
+for (let i = 0; i < 4000; i++) {
   const star2 = new THREE.Mesh(starGeometry, starMaterial);
   star2.position.x = THREE.MathUtils.randFloatSpread(5000);
   star2.position.y = THREE.MathUtils.randFloatSpread(5000);
@@ -394,17 +395,19 @@ function animate() {
 
   //EARTH
   earth.rotation.y += 0.002;
-  mercury.rotation.z += 0.03;
+  earth.rotation.z = 0.03;
 
   //MOON
   moon.rotation.y += -0.01;
 
   //MARS
   mars.rotation.y += 0.01;
+  mars.rotation.z = 0.03;
 
   //JUPITER
   jupiter.rotation.x += 0.00;
   jupiter.rotation.y += 0.01;
+  jupiter.rotation.z = 0.02;
 
   //SATURN
   saturnRing.rotation.x = 1.1;
