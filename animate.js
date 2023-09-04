@@ -12,7 +12,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-camera.position.set(-20, 7, -10045); 
+camera.position.set(-20, 7, -145); 
 camera.lookAt(scene.position);
 
 
@@ -98,7 +98,7 @@ var sun = new THREE.Mesh(sunGeometry, sunMaterial);
 sun.position.set(145, -80, -5);
 scene.add(sun);
 //STAR
-var starGeometry = new THREE.TetrahedronGeometry(2.2, 1);
+var starGeometry = new THREE.TetrahedronGeometry(1.9, 1);
 //var starTexture = new THREE.TextureLoader().load("sun.jpg");
 var starMaterial = new THREE.MeshStandardMaterial({ 
   //map: starTexture,
@@ -133,7 +133,6 @@ var starMaterial = new THREE.MeshStandardMaterial({
  }
 
 //PARALLAX
-
 for (let i = 0; i < 4000; i++) {
   const star2 = new THREE.Mesh(starGeometry, starMaterial);
   star2.position.x = THREE.MathUtils.randFloatSpread(5000);
@@ -338,7 +337,7 @@ var position = 0;
 // Function to update the positions of stars and loop them
 function updateStarsPosition() {
   // Set the movement speed of the stars in the x-axis
-  const speed = 0.1;
+  const speed = 0.41;
 
   // Loop through the stars array and update their positions
   stars.forEach(star => {
@@ -372,7 +371,6 @@ function updateStars2Position() {
 
 function animate() {
   //SUN
-  
   sun.rotation.x += 118.0001;
   sun.rotation.y = 118.0001;
   sun.rotation.z = 118.0001;
