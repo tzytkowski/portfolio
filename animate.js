@@ -400,7 +400,7 @@ function animate() {
 
   //MARS
   mars.rotation.y += 0.01;
-  mars.rotation.z = 0.03;
+  mars.rotation.z = 0.025;
 
   //JUPITER
   jupiter.rotation.x += 0.00;
