@@ -107,14 +107,14 @@ var starMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.0,
   antialias: true,
   emissive: new THREE.Color(0, 0, 0),
-  emissiveIntensity: 0.2
+  emissiveIntensity: 0.0
  });
  // Create an array to store the stars
  const stars = [];
  const stars2 = [];
 
-               //Create stars and add them to the scene
- for (let i = 0; i < 9000; i++) {
+  //Creating stars
+ for (let i = 0; i < 500; i++) {
                 //Create a star mesh
    const star = new THREE.Mesh(starGeometry, starMaterial);
  
@@ -133,7 +133,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
  }
 
 //PARALLAX
-for (let i = 0; i < 4000; i++) {
+for (let i = 0; i < 250; i++) {
   const star2 = new THREE.Mesh(starGeometry, starMaterial);
   star2.position.x = THREE.MathUtils.randFloatSpread(5000);
   star2.position.y = THREE.MathUtils.randFloatSpread(5000);
