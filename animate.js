@@ -107,7 +107,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.0,
   antialias: true,
   emissive: new THREE.Color(0, 0, 0),
-  emissiveIntensity: 0.0
+  emissiveIntensity: 0.2
  });
  // Create an array to store the stars
  const stars = [];
