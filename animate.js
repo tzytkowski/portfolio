@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/cont
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
-  120,
+  80,
   window.innerWidth / window.innerHeight,
   0.1,
   15000
@@ -126,7 +126,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
    // add the star mesh to the scene
    star.material.color.set('0x9DEE06');
    scene.add(star);
- 
+ 0
    // Add the star to the stars array
    stars.push(star);
    star.receiveShadow = true;
