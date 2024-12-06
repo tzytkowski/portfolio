@@ -98,7 +98,7 @@ var sun = new THREE.Mesh(sunGeometry, sunMaterial);
 sun.position.set(145, -80, -5);
 scene.add(sun);
 //STAR
-var starGeometry = new THREE.TetrahedronGeometry(1.9, 1);
+var starGeometry = new THREE.TetrahedronGeometry(2.9, 1);
 //var starTexture = new THREE.TextureLoader().load("sun.jpg");
 var starMaterial = new THREE.MeshStandardMaterial({ 
   //map: starTexture,
@@ -114,7 +114,7 @@ var starMaterial = new THREE.MeshStandardMaterial({
  const stars2 = [];
 
   //Creating stars
- for (let i = 0; i < 500; i++) {
+ for (let i = 0; i < 300; i++) {
                 //Create a star mesh
    const star = new THREE.Mesh(starGeometry, starMaterial);
  
@@ -135,9 +135,9 @@ var starMaterial = new THREE.MeshStandardMaterial({
 //PARALLAX
 for (let i = 0; i < 250; i++) {
   const star2 = new THREE.Mesh(starGeometry, starMaterial);
-  star2.position.x = THREE.MathUtils.randFloatSpread(5000);
-  star2.position.y = THREE.MathUtils.randFloatSpread(5000);
-  star2.position.z = THREE.MathUtils.randFloatSpread(5000);
+  star2.position.x = THREE.MathUtils.randFloatSpread(4000);
+  star2.position.y = THREE.MathUtils.randFloatSpread(4000);
+  star2.position.z = THREE.MathUtils.randFloatSpread(4000);
   star2.material.color.set('0x9DEE06');
   scene.add(star2);
   star2.receiveShadow = true;
@@ -336,15 +336,9 @@ var position = 0;
 
 // Function to update the positions of stars and loop them
 function updateStarsPosition() {
-  // Set the movement speed of the stars in the x-axis
-  const speed = 0.41;
-
-  // Loop through the stars array and update their positions
+  const speed = 7.21;
   stars.forEach(star => {
-    // Move the stars in the x-axis based on the speed
     star.position.x += speed;
-
-    // Check if the star has reached the end of its travel distance
     if (star.position.x >= 4000) {
       // Reset the position of the star to the starting point
       star.position.x = -4000;
@@ -352,18 +346,11 @@ function updateStarsPosition() {
   });
 }
 function updateStars2Position() {
-  // Set the movement speed of the stars in the x-axis
-  const speed2 = 0.22;
-
-  // Loop through the stars array and update their positions
+  const speed2 = 4.22;
   stars2.forEach(star2 => {
-    // Move the stars in the x-axis based on the speed
     star2.position.x += speed2;
-
-    // Check if the star has reached the end of its travel distance
-    if (star2.position.x >= 8000) {
-      // Reset the position of the star to the starting point
-      star2.position.x = -8000;
+    if (star2.position.x >= 2000) {
+      star2.position.x = -2000;
     }
   });
 }
