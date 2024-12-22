@@ -3,7 +3,7 @@ import { OrbitControls } from 'https://unpkg.com/three@0.126.1/examples/jsm/cont
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
-  80,
+  80, // Field of View
   window.innerWidth / window.innerHeight,
   0.1,
   15000
@@ -36,12 +36,12 @@ controls.zoomSpeed = 1.3;
 //STAGE
 
 //LOD
-/*
+
 //LIGHT
-var light = new THREE.SpotLight(0xFFFFFF, 22, 0, Math.PI / 4, 1); // Adjust the intensity (second parameter) to make it brighter
-light.position.set(5, 0, -5);
+var light = new THREE.SpotLight(0xFFFFFF, 1, 0, Math.PI / 4, 1); // Adjust the intensity (second parameter) to make it brighter
+light.position.set(-5, 5, -5);
 scene.add(light);
-*/
+
 
 
 //LIGHT HELPER
@@ -71,14 +71,14 @@ scene.add(backgroundPlane);
 const planetTexture = new THREE.TextureLoader().load('planetTextures/roughtexture.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
 
-//SECOND TEXTURE WHICH IS ESSENTIALLY A BUMP 
+// SECOND TEXTURE WHICH IS ESSENTIALLY A BUMP 
 const planetTextureTwo = new THREE.TextureLoader().load('planetTextures/bumpity.jpg');
 planetTexture.minFilter = THREE.LinearFilter;
-//BUMP
+// BUMP
 const planetBump = new THREE.TextureLoader().load('planetTextures/planetbump.jpg');
 
-//SUN
-var sunGeometry = new THREE.TorusGeometry(2.913, 10, 30, 149, 6.283185);
+// SUN
+var sunGeometry = new THREE.SphereGeometry(64.913, 64, 30, 149, 6.283185);
 var sunSkin = new THREE.TextureLoader().load("planetImages/sun.png");
 sunSkin.minFilter = THREE.LinearFilter;
 var sunTexture = new THREE.TextureLoader().load("planetImages/sunny.jpg");
@@ -95,8 +95,10 @@ var sunMaterial = new THREE.MeshStandardMaterial({
   antialias: true
  });
 var sun = new THREE.Mesh(sunGeometry, sunMaterial);
-sun.position.set(145, -80, -5);
+sun.position.set(145, -80, -75);
 scene.add(sun);
+
+
 //STAR
 var starGeometry = new THREE.TetrahedronGeometry(2.9, 1);
 //var starTexture = new THREE.TextureLoader().load("sun.jpg");
@@ -143,9 +145,9 @@ for (let i = 0; i < 250; i++) {
   star2.receiveShadow = true;
   stars2.push(star2);
 }
-//SECOND LIGHT`
-const secondlight = new THREE.DirectionalLight(0xffffff, 1.7);
-secondlight.position.set(115, -80, -5);
+//LIGHT`
+const secondlight = new THREE.DirectionalLight(0xffffff, 2.7);
+secondlight.position.set(115, -80, -55);
 scene.add(secondlight);
 secondlight.castShadow = true; // default false
 secondlight.shadow.mapSize.width = 50012; // default
@@ -167,7 +169,7 @@ var mercuryMaterial = new THREE.MeshStandardMaterial({
   
 });
 var mercury = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
-mercury.position.set(55, -33, -5); // Corrected the variable name to 'mercury'
+mercury.position.set(55, -33, -75); // Corrected the variable name to 'mercury'
 scene.add(mercury);
 
 //VENUS
@@ -182,7 +184,7 @@ var venusMaterial = new THREE.MeshStandardMaterial({
   antialias: true
 });
 var venus = new THREE.Mesh(venusGeometry, venusMaterial);
-venus.position.set(45, -26, -5);
+venus.position.set(45, -26, -75);
 scene.add(venus);
 
 //EARTH
@@ -200,7 +202,7 @@ var planetMaterial = new THREE.MeshStandardMaterial({
   antialias: true
 });
 var earth = new THREE.Mesh(planet, planetMaterial);
-earth.position.set(30,-14, -5);
+earth.position.set(30,-14, -75);
 scene.add(earth);
 
 //MOON
@@ -232,7 +234,7 @@ var marsMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.1,
 });
 var mars = new THREE.Mesh(marsGeometry, marsMaterial);
-mars.position.set(10, 1, -5);
+mars.position.set(10, 1, -75);
 scene.add(mars);
 
 //JUPITER
@@ -246,7 +248,7 @@ var jupiterMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.1,
 });
 var jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
-jupiter.position.set(0, 8, -5);
+jupiter.position.set(0, 8, -75);
 scene.add(jupiter);
 
 //SATURN
@@ -260,7 +262,7 @@ var saturnMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.1,
 });
 var saturn = new THREE.Mesh(saturnGeometry, saturnMaterial);
-saturn.position.set(-15, 20, -5);
+saturn.position.set(-15, 20, -75);
 scene.add(saturn);
 
 //SATURN RING
@@ -275,7 +277,7 @@ var saturnRingMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.1,
 });
 var saturnRing = new THREE.Mesh(saturnRingGeometry, saturnRingMaterial);
-saturnRing.position.set(-15, 20, -5);
+saturnRing.position.set(-15, 20, -75);
 scene.add(saturnRing);
 
 //URANUS
@@ -291,7 +293,7 @@ var uranusMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.1,
 });
 var uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
-uranus.position.set(-45, 40, -5);
+uranus.position.set(-45, 40, -75);
 scene.add(uranus);
 
 //NEPTUNE
@@ -307,7 +309,7 @@ var neptuneMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.25,
 });
 var neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
-neptune.position.set(-70, 55, -5);
+neptune.position.set(-70, 55, -75);
 scene.add(neptune);
 
 /*
@@ -334,14 +336,14 @@ scene.add(spaceship);
 var position = 0;
 
 
-// Function to update the positions of stars and loop them
+// Make the stars move
 function updateStarsPosition() {
-  const speed = 7.21;
+  const speed = 7.11;
   stars.forEach(star => {
     star.position.x += speed;
-    if (star.position.x >= 4000) {
+    if (star.position.x >= 10000) {
       // Reset the position of the star to the starting point
-      star.position.x = -4000;
+      star.position.x = -10000;
     }
   });
 }
@@ -395,7 +397,7 @@ function animate() {
   jupiter.rotation.z = 0.02;
 
   //SATURN
-  saturnRing.rotation.x = 1.1;
+  saturnRing.rotation.x = 1.5;
   saturnRing.rotation.z += 0.0080;
 
   //URANUS
